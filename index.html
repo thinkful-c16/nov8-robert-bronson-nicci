@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form id='js-searchForm'>  
-        <label for="js-search-entry">Youtube:</label>
-        <input id='' type="text" name="js-search-entry" class="js-search-entry" placeholder="eg. Star Wars">
-        <button id='js-searchString' type="submit" name="js-searchButton">Search</button>   
-    </form>
+    <h1>Welcome to Thinkful Tube</h1>
+    <div class="content">
+        <form id='js-searchForm'>  
+            <p>Search for YouTube videos by entering your search term here:</p>
+            <label for="js-search-entry">Enter search term:</label>
+            <input id='' type="text" name="js-search-entry" class="js-search-entry" placeholder="eg. Star Wars">
+            <button id='js-searchString' type="submit" name="js-searchButton">Search</button>   
+        </form>
+        <div class='displayResults'></div>
+    </div>
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
