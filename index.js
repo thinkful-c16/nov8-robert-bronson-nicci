@@ -4,15 +4,31 @@
 /******************************************************** 
  Questions and answers data 
 ********************************************************/
-$.getJSON('https://www.googleapis.com/youtube/v3/search', (response) => {
-    console.log(response);
-});
+// $.getJSON('https://www.googleapis.com/youtube/v3/search', (response) => {
+//     console.log(response);
+// });
 
+// function handleResponse(response) {
+//     // do something with `response`
+//     const elements = response.map(item => `<li>${item.title}</li>`);
+//     $('.results').html(elements);
+// }
 
+// $.getJSON('https://www.googleapis.com/youtube/v3/search', handleResponse);
 /******************************************************** 
  All global variables here. 
 ********************************************************/
-const STORE = []
+// const STORE = {
+//     results {
+
+//     }
+// }
+
+// const query = {
+//     q: $(),
+//     part:,
+//     key:
+// }
 
 /******************************************************** 
 Step 1: Render the DOM. 
@@ -25,17 +41,15 @@ Step 1: Render the DOM.
  ********************************************************/
 //function that listens to button inputRobert Frazier9:31 AM
 function addListeners() {
-  $('#js-search-entry').on('submit', 'form', () => { 
-    const searchString = $('input').val(); 
-    checkGuess(searchString); 
-    render(); 
-});
-
-  $('#js-search-entry').on('click', 'button', () => { 
-    changePage('guess'); 
-    render(); 
+  console.log('add addlisteners works!!');
+  $('#js-searchForm').on('submit', (event) => { 
+    event.preventDefault();
+    const searchString = $('.js-search-entry').val(); 
+    console.log(searchString); 
+  });
+  $('.js-searchButton').on('click', 'button', () => { 
   }); 
-};
+}
 
 
 
@@ -55,6 +69,6 @@ function addListeners() {
 $(()=>{
   // console.log('Begin the Quiz program.');
   addListeners();
-}
+});
 
 // Render -> User Input (Event Listener) -> State Changes (Update the STORE) -> Re-Render
