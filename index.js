@@ -5,6 +5,7 @@ function getUserInput(){
   $('.js-search-form').submit(function(event){
     event.preventDefault();
     const searchTerm = $('.js-search-input').val();
+    $('.js-search-input').val('');
     buildJSON(searchTerm);
   });
 }
@@ -22,20 +23,26 @@ function buildJSON(str){
 
 function getJSONResponse(data){
   //callback function for .getJSON request
-  const results = data;
-  renderJSONResults(results);
+  renderJSONResults(data);
 }
 
 function renderJSONResults(results){
   //this function will format/display the .getJSON response data
-  const html = results.items.map(function(item){
+  console.log(results);
+  const jsonHTML = results.items.map(function(item){
     const thumbnail = item.snippet.thumbnails.default.url;
+    const height = item.snippet.thumbnails.default.height;
+    const width = item.snippet.thumbnails.default.width;
+    const videoURL = `https://youtu.be/${item.id.videoId}`;
+    const altText = item.snippet.title;
+    const channelURL = `https://youtube.com/channel/${item.snippet.channelId}`;
+    //console.log(videoURL);
     return `
-    <img src="${thumbnail}" alt="Thumbnail" height="90" width="120">
+    <a href="${videoURL}" target="_blank"><img src="${thumbnail}" alt="${altText}" height="${height}" width="${width}"></a><p><a href="${channelURL}" target="_blank">More from this channel</a></p>
     `;
   });
 
-  $('.content').append(html); 
+  $('.displayResults').html(jsonHTML); 
 }
 
 function main(){
