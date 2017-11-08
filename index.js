@@ -53,9 +53,11 @@ function renderJSONResults(results){
     const width=item.snippet.thumbnails.default.width;
     const videoURL = `https://youtu.be/${item.id.videoId}`;
     const altText = item.snippet.title;
+    const channelURL=`https://youtube.com/channel/${item.snippet.channelId}`;
     console.log(videoURL);
     return `
-    <a href='${videoURL}' target='_blank'><img src='${thumbnail}' alt='${altText}' height='${height}' width='${width}'>
+    <a href="${videoURL}" target="_blank"><img src="${thumbnail}" alt="${altText}" height="${height}" width="${width}">
+    </a><p><a href="${channelURL}" target="_blank">More from this channel</a></p>
     `;
   });
 
